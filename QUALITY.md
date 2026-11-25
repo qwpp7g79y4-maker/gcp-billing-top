@@ -1,6 +1,6 @@
 # Quality
 
-Tested code commit: a7b3b5c (measured 2026-11-25; the commit after it changes documents only).
+Tested code commit: a3d92b5 (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
 
 Tests: 244
@@ -62,6 +62,29 @@ cargo publish --dry-run
 
 The measured result of these gates is the next section. The sections after it
 are earlier measurements, kept as they were written.
+
+## Measured 2026-11-25, fix a3d92b5 (clippy on macOS and Windows)
+
+Date: 2026-11-25. Fix commit: a3d92b5. Machine: Linux 7.2.15. Clean worktree of a3d92b5.
+
+Gap: CI run 45698473602 failed on clippy, not on the tests, on macos-latest,
+macos-15-intel and windows-latest: `tests/cli.rs:925`, `function
+run_with_stdout_redirect is never used`. The two tests that call it are under
+`cfg(target_os = "linux")`; the helper was not. The helper is now under the same
+`cfg`, with no `allow(dead_code)` and no `expect`. The two Linux tests are
+unchanged (exit 2 with standard output closed, exit 0 for `/dev/null`).
+
+| Command | Result |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, no warnings |
+| `cargo test --locked` | exit 0: 158 unit tests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doc-tests: 244 passed, 0 failed |
+| `cargo test --release --locked` | exit 0: the same 244 passed, 0 failed |
+
+Not run: clippy and tests on macos-latest, macos-15-intel and windows-latest
+(not run; the CI run above is the failing one, no new run exists), `cargo deny`,
+`cargo audit`, `cargo publish --dry-run`, fuzzing, mutation testing. Nothing
+was pushed.
 
 ## Measured 2026-11-25, fix a7b3b5c (closed standard output)
 

@@ -1,6 +1,6 @@
 # Kwaliteit
 
-Geteste codecommit: a7b3b5c (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
+Geteste codecommit: a3d92b5 (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan
 tests staat daar; de testnamen zijn Engels.
 
@@ -28,6 +28,30 @@ cargo publish --dry-run
 
 De gemeten uitslag van deze poorten staat in het volgende kopje. De kopjes
 daarna zijn eerdere metingen, ongewijzigd bewaard.
+
+## Gemeten 2026-11-25, fix a3d92b5 (clippy op macOS en Windows)
+
+Datum: 2026-11-25. Fixcommit: a3d92b5. Machine: Linux 7.2.15. Schone worktree van a3d92b5.
+
+Gat: CI-run 45698473602 faalde op clippy, niet op de tests, op macos-latest,
+macos-15-intel en windows-latest: `tests/cli.rs:925`, `function
+run_with_stdout_redirect is never used`. De twee tests die haar aanroepen staan
+onder `cfg(target_os = "linux")`; de hulpfunctie niet. Die staat nu onder
+dezelfde `cfg`, zonder `allow(dead_code)` en zonder `expect`. De twee
+Linux-tests zijn ongewijzigd (exit 2 bij gesloten standaarduitvoer, exit 0 bij
+`/dev/null`).
+
+| Opdracht | Uitkomst |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, geen waarschuwingen |
+| `cargo test --locked` | exit 0: 158 unittests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doctests: 244 geslaagd, 0 mislukt |
+| `cargo test --release --locked` | exit 0: dezelfde 244 geslaagd, 0 mislukt |
+
+Niet uitgevoerd (not run): clippy en tests op macos-latest, macos-15-intel en
+windows-latest (de CI-run hierboven is de falende, er is geen nieuwe run),
+`cargo deny`, `cargo audit`, `cargo publish --dry-run`, fuzzing, mutation
+testing. Er is niets gepusht.
 
 ## Gemeten 2026-11-25, fix a7b3b5c (gesloten standaarduitvoer)
 
