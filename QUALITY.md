@@ -1,6 +1,6 @@
 # Quality
 
-Tested code commit: 7f1a4d8 (the last commit that is not a pure document).
+Tested code commit: c837bdb (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
 
 Tests: 242
@@ -60,8 +60,24 @@ cargo test
 cargo publish --dry-run
 ```
 
-Results of the last run are recorded in the commit's measurement note, not here,
-so this file cannot drift from the code.
+The measured result of these gates is the next section. The sections after it
+are earlier measurements, kept as they were written.
+
+## Measured 2026-11-25, commit c837bdb
+
+Date: 2026-11-25. Commit: c837bdb. Machine: Linux 7.2.15, cargo 1.99.0, rustc 1.99.0.
+A clean worktree of c837bdb, nothing changed in the sources.
+
+| Command | Result |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, no warnings |
+| `cargo test --locked` | exit 0: 158 unit tests, 0 in `src/main.rs`, 70 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doc-tests: 242 passed, 0 failed |
+| `cargo test --release --locked` | exit 0: the same 242 passed, 0 failed |
+
+Not run in this measurement: `cargo deny`, `cargo audit`,
+`cargo publish --dry-run`, a GitHub Actions run, a Windows or macOS run,
+fuzzing, mutation testing.
 
 ## What was not in the short note
 

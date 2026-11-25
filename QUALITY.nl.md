@@ -1,6 +1,6 @@
 # Kwaliteit
 
-Geteste codecommit: 7f1a4d8 (de laatste commit die geen puur document is).
+Geteste codecommit: c837bdb (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan
 tests staat daar; de testnamen zijn Engels.
 
@@ -25,6 +25,25 @@ cargo clippy --all-targets -- -D warnings
 cargo test
 cargo publish --dry-run
 ```
+
+De gemeten uitslag van deze poorten staat in het volgende kopje. De kopjes
+daarna zijn eerdere metingen, ongewijzigd bewaard.
+
+## Gemeten 2026-11-25, commit c837bdb
+
+Datum: 2026-11-25. Commit: c837bdb. Machine: Linux 7.2.15, cargo 1.99.0, rustc 1.99.0.
+Een schone worktree van c837bdb, niets in de bron gewijzigd.
+
+| Opdracht | Uitslag |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, geen waarschuwingen |
+| `cargo test --locked` | exit 0: 158 unittests, 0 in `src/main.rs`, 70 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doctests: 242 geslaagd, 0 mislukt |
+| `cargo test --release --locked` | exit 0: dezelfde 242 geslaagd, 0 mislukt |
+
+Niet uitgevoerd (not run) in deze meting: `cargo deny`, `cargo audit`,
+`cargo publish --dry-run`, een GitHub Actions-run, een Windows- of macOS-run,
+fuzzing, mutatietests.
 
 ## Gemeten 2026-11-24, review gcp-eind-ad79106 (B-1)
 
