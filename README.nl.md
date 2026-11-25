@@ -187,7 +187,7 @@ gedragswijziging komt met een test, en het aantal tests in dit bestand en in
 
 ## Kwaliteit
 
-Tests: 242
+Tests: 244
 
 Details en de koppeling van beweringen aan tests staan in
 [QUALITY.nl.md](QUALITY.nl.md).

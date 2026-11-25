@@ -920,3 +920,40 @@ fn without_blank_lines_the_line_number_is_unchanged() {
         assert!(e.contains("<stdin>, line 3:"), "{eol:?}: {e}");
     }
 }
+
+/// Starts the binary through `sh` with descriptor 1 given by `redirect` (`>&-` or `>/dev/null`).
+fn run_with_stdout_redirect(redirect: &str) -> (i32, String) {
+    let script = format!("exec \"$0\" \"$@\" {redirect}");
+    let out = Command::new("sh")
+        .arg("-c")
+        .arg(script)
+        .arg(env!("CARGO_BIN_EXE_gcp-billing-top"))
+        .arg(fixture("bom.csv"))
+        .stdin(Stdio::null())
+        .stderr(Stdio::piped())
+        .output()
+        .expect("sh starts");
+    (
+        out.status.code().unwrap_or(-1),
+        String::from_utf8_lossy(&out.stderr).into_owned(),
+    )
+}
+
+#[cfg(target_os = "linux")]
+#[test]
+fn closed_standard_output_at_start_is_exit_2_with_a_message() {
+    let (code, stderr) = run_with_stdout_redirect(">&-");
+    assert_eq!(code, 2, "stderr: {stderr}");
+    assert!(
+        stderr.contains("standard output is closed"),
+        "stderr: {stderr}"
+    );
+}
+
+#[cfg(target_os = "linux")]
+#[test]
+fn standard_output_on_dev_null_stays_exit_0() {
+    let (code, stderr) = run_with_stdout_redirect(">/dev/null");
+    assert_eq!(code, 0, "stderr: {stderr}");
+    assert!(stderr.is_empty(), "stderr: {stderr}");
+}

@@ -186,7 +186,7 @@ behaviour comes with a test, and the test count in this file and in
 
 ## Quality
 
-Tests: 242
+Tests: 244
 
 Details and the claim-to-test map are in [QUALITY.md](QUALITY.md).
 

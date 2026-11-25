@@ -4,7 +4,7 @@ Geteste codecommit: c837bdb (gemeten 2026-11-25; de commit erna wijzigt alleen d
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan
 tests staat daar; de testnamen zijn Engels.
 
-Tests: 242
+Tests: 244
 
 Het getal is het aantal testfuncties in `src/` en `tests/`. De test
 `quality_test_count_equals_suite` controleert QUALITY.md daarop.

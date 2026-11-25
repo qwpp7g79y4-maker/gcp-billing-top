@@ -3,7 +3,7 @@
 Tested code commit: c837bdb (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
 
-Tests: 242
+Tests: 244
 
 The number is the count of test functions in `src/` and `tests/`; the test
 `quality_test_count_equals_suite` fails when it differs from the suite, and
