@@ -47,6 +47,12 @@ Linux-tests zijn ongewijzigd (exit 2 bij gesloten standaarduitvoer, exit 0 bij
 | `cargo clippy --all-targets --locked -- -D warnings` | exit 0, geen waarschuwingen |
 | `cargo test --locked` | exit 0: 158 unittests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doctests: 244 geslaagd, 0 mislukt |
 | `cargo test --release --locked` | exit 0: dezelfde 244 geslaagd, 0 mislukt |
+| `cargo +1.85 fmt --check` | exit 0 (rustc 1.85.1, gemeten 2026-11-25) |
+| `cargo +1.85 clippy --all-targets --locked -- -D warnings` | exit 0, geen waarschuwingen (rustc 1.85.1, gemeten 2026-11-25) |
+| `cargo +1.85 test --locked` | exit 0: 158 unittests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doctests: 244 geslaagd, 0 mislukt (rustc 1.85.1, gemeten 2026-11-25) |
+
+De 1.85-rijen zijn de gedeclareerde `rust-version`, gedraaid op de ongewijzigde
+bronnen; `cargo +1.85 test --release --locked` is niet uitgevoerd (not run).
 
 Niet uitgevoerd (not run): clippy en tests op macos-latest, macos-15-intel en
 windows-latest (de CI-run hierboven is de falende, er is geen nieuwe run),
