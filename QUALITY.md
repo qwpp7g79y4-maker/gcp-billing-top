@@ -85,7 +85,7 @@ unchanged (exit 2 with standard output closed, exit 0 for `/dev/null`).
 | `cargo +1.85 test --locked` | exit 0: 158 unit tests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doc-tests: 244 passed, 0 failed (rustc 1.85.1, measured 2026-11-25) |
 
 The 1.85 rows are the declared `rust-version`, run on the unchanged sources;
-`cargo +1.85 test --release --locked` is not run.
+`cargo +1.85 test --release --locked` exit 0: 158 unit tests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doc-tests: 244 passed, 0 failed (rustc 1.85.1, measured 2026-11-25, isolated target directory).
 
 Not run: clippy and tests on macos-latest, macos-15-intel and windows-latest
 (not run; the CI run above is the failing one, no new run exists), `cargo deny`,
