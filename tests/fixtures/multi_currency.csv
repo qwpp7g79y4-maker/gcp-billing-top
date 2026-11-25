@@ -1,0 +1,4 @@
+project.id,sku.description,usage_start_time,cost,currency
+p1,Core,2026-10-01,10.00,USD
+p1,Core,2026-10-02,9.00,EUR
+p2,RAM,2026-10-03,1.00,USD

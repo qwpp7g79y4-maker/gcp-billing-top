@@ -1,0 +1,7 @@
+project.id,sku.description,usage_start_time,labels,cost,credits,currency
+proj-a,N2 Instance Core running in Americas,2026-09-05T00:00:00Z,"[{""key"":""env"",""value"":""prod""},{""key"":""team"",""value"":""web""}]",100.00,0,USD
+proj-a,N2 Instance Core running in Americas,2026-09-20T00:00:00Z,"[{""key"":""env"",""value"":""prod""},{""key"":""team"",""value"":""web""}]",50.00,-5.00,USD
+proj-a,Standard Storage US Multi-region,2026-09-10T00:00:00Z,"[{""key"":""env"",""value"":""prod""}]",40.00,,USD
+proj-b,Standard Storage US Multi-region,2026-09-11T00:00:00Z,"[{""key"":""env"",""value"":""dev""}]",10.00,0,USD
+proj-b,Network Egress,2026-09-12T00:00:00Z,[],30.00,0,USD
+proj-b,Old Legacy SKU,2026-09-13T00:00:00Z,[],20.00,,USD

@@ -1,0 +1,4 @@
+sku.description,usage_start_time,labels,cost
+Core,2026-10-01,env=prod;team=web,10
+Core,2026-10-02,env=dev,4
+RAM,2026-10-03,,1

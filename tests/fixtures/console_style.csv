@@ -1,0 +1,5 @@
+Billing account name,Project name,Project ID,Service description,SKU description,SKU ID,Usage start date,Usage end date,Cost ($),Currency
+Acme,Web,web-1,Compute Engine,N2 Core,AAAA-1,"Sep 28, 2026","Sep 28, 2026",10.50,USD
+Acme,Web,web-1,Compute Engine,N2 Core,AAAA-1,"Oct 1, 2026","Oct 1, 2026",12.25,USD
+Acme,Web,web-1,Cloud Storage,Standard Storage,BBBB-2,"Oct 2, 2026","Oct 2, 2026",3.00,USD
+Acme,Data,data-1,BigQuery,Analysis,CCCC-3,"Oct 2, 2026","Oct 2, 2026",7.00,USD

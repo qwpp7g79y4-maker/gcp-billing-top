@@ -1,0 +1,18 @@
+[package]
+name = "gcp-billing-top"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Offline CLI that shows the top costs per SKU, project and label from a GCP billing-export CSV, with a month-over-month delta"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/qwpp7g79y4-maker/gcp-billing-top"
+keywords = ["gcp", "billing", "finops", "cost", "cli"]
+categories = ["command-line-utilities"]
+exclude = ["/.codegraph", "/target", ".github/"]
+
+[dependencies]
+clap = { version = "4.6.7", features = ["derive"] }
+csv = "1.4.0"
+serde = "1.0.229"
+serde_json = "1.0.154"

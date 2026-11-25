@@ -1,0 +1,4 @@
+invoice.month,project.id,sku.description,cost
+202609,p1,Core,10
+202610,p1,Core,12
+202610,p2,RAM,3
