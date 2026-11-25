@@ -921,6 +921,7 @@ fn without_blank_lines_the_line_number_is_unchanged() {
     }
 }
 
+#[cfg(target_os = "linux")]
 /// Starts the binary through `sh` with descriptor 1 given by `redirect` (`>&-` or `>/dev/null`).
 fn run_with_stdout_redirect(redirect: &str) -> (i32, String) {
     let script = format!("exec \"$0\" \"$@\" {redirect}");
