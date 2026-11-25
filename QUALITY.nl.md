@@ -1,6 +1,6 @@
 # Kwaliteit
 
-Geteste codecommit: c837bdb (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
+Geteste codecommit: a7b3b5c (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan
 tests staat daar; de testnamen zijn Engels.
 
@@ -12,7 +12,7 @@ Het getal is het aantal testfuncties in `src/` en `tests/`. De test
 | Set | Waar | Tests |
 | --- | --- | --- |
 | unittests | `src/*.rs` | 158 |
-| end-to-end (echt programma, testbestanden) | `tests/cli.rs` | 70 |
+| end-to-end (echt programma, testbestanden) | `tests/cli.rs` | 72 |
 | documenten, licenties, manifest | `tests/docs.rs` | 14 |
 
 ## Poorten
@@ -28,6 +28,32 @@ cargo publish --dry-run
 
 De gemeten uitslag van deze poorten staat in het volgende kopje. De kopjes
 daarna zijn eerdere metingen, ongewijzigd bewaard.
+
+## Gemeten 2026-11-25, fix a7b3b5c (gesloten standaarduitvoer)
+
+Datum: 2026-11-25. Fixcommit: a7b3b5c. Machine: Linux 7.2.15. Schone worktree van 3bfff1c plus de fix.
+
+Gat: met standaarduitvoer gesloten bij de start (`>&-`) stopte het programma
+met 0 en schreef niets, omdat Rust een gesloten descriptor 1 vóór `main` opnieuw
+opent als `/dev/null`. Nu volgt afsluitcode 2 met `standard output is closed`;
+`>/dev/null` blijft 0. De controle is een constructor in `.init_array`
+(`src/stdout_probe.rs`, de enige `unsafe` in het programma), alleen Linux.
+
+Rood, vóór de fix, `cargo test --locked --test cli standard_output`:
+1 geslaagd (`/dev/null`), 1 mislukt (`closed_standard_output_at_start_is_exit_2_with_a_message`, links 0, rechts 2).
+
+| Opdracht | Uitkomst |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, geen waarschuwingen |
+| `cargo test --locked` | exit 0: 158 unittests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doctests: 244 geslaagd, 0 mislukt |
+| `cargo test --release --locked` | exit 0: dezelfde 244 geslaagd, 0 mislukt |
+
+Gecontroleerd en geen gat: er is geen `--output`-optie en geen `build.rs`, dus
+geen schrijven via symlink of naar een speciaal bestand en geen lezen van
+`.git/HEAD`. Niet uitgevoerd: `cargo deny`, `cargo audit`,
+`cargo publish --dry-run`, een GitHub Actions-run, een Windows- of macOS-run
+(daar doet de controle niets), fuzzing, mutation testing.
 
 ## Gemeten 2026-11-25, commit c837bdb
 

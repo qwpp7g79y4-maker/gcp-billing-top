@@ -1,6 +1,6 @@
 # Quality
 
-Tested code commit: c837bdb (measured 2026-11-25; the commit after it changes documents only).
+Tested code commit: a7b3b5c (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
 
 Tests: 244
@@ -12,7 +12,7 @@ The number is the count of test functions in `src/` and `tests/`; the test
 | Suite | Where | Tests |
 | --- | --- | --- |
 | unit tests | `src/*.rs` | 158 |
-| end-to-end (real binary, fixtures) | `tests/cli.rs` | 70 |
+| end-to-end (real binary, fixtures) | `tests/cli.rs` | 72 |
 | docs, licenses, manifest | `tests/docs.rs` | 14 |
 
 ## Fixtures
@@ -62,6 +62,32 @@ cargo publish --dry-run
 
 The measured result of these gates is the next section. The sections after it
 are earlier measurements, kept as they were written.
+
+## Measured 2026-11-25, fix a7b3b5c (closed standard output)
+
+Date: 2026-11-25. Fix commit: a7b3b5c. Machine: Linux 7.2.15. Clean worktree of 3bfff1c plus the fix.
+
+Gap: with standard output closed at start (`>&-`) the program exited 0 and
+printed nothing, because Rust reopens a closed descriptor 1 as `/dev/null`
+before `main`. It now exits 2 with `standard output is closed`; `>/dev/null`
+stays exit 0. The check is a constructor in `.init_array` (`src/stdout_probe.rs`,
+the only `unsafe` in the binary), Linux only.
+
+Red, before the fix, `cargo test --locked --test cli standard_output`:
+1 passed (`/dev/null`), 1 failed (`closed_standard_output_at_start_is_exit_2_with_a_message`, left 0, right 2).
+
+| Command | Result |
+| --- | --- |
+| `cargo fmt --check` | exit 0 |
+| `cargo clippy --all-targets --locked -- -D warnings` | exit 0, no warnings |
+| `cargo test --locked` | exit 0: 158 unit tests, 0 in `src/main.rs`, 72 in `tests/cli.rs`, 14 in `tests/docs.rs`, 0 doc-tests: 244 passed, 0 failed |
+| `cargo test --release --locked` | exit 0: the same 244 passed, 0 failed |
+
+Checked and not a gap: there is no `--output` option and no `build.rs` in this
+tree, so there is no symlink or special-file write and no `.git/HEAD` read.
+Not run: `cargo deny`, `cargo audit`, `cargo publish --dry-run`, a GitHub
+Actions run, a Windows or macOS run (the probe does nothing there), fuzzing,
+mutation testing.
 
 ## Measured 2026-11-25, commit c837bdb
 
