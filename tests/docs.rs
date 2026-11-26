@@ -228,7 +228,7 @@ fn sources_never_open_sockets() {
 fn changelog_has_release_0_1_0() {
     let log = read("CHANGELOG.md");
     assert!(log.contains("## [0.1.0] - 2026-11-09"));
-    assert!(read("Cargo.toml").contains("version = \"0.1.0\""));
+    assert!(read("Cargo.toml").contains("version = \"0.1.1\""));
 }
 
 #[test]

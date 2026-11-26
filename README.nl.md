@@ -144,7 +144,7 @@ Regels zonder SKU, project of labels staan onder `(no sku)`, `(no project)` en
 
 ## Installatie
 
-Versie 0.1.0. Van crates.io, zodra 0.1.0 daar staat:
+Versie 0.1.1. Van crates.io, zodra 0.1.1 daar staat:
 
 ```sh
 cargo install gcp-billing-top

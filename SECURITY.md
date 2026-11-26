@@ -18,4 +18,4 @@ welcome.
 
 ## Supported versions
 
-Only the latest release (0.1.0 at the time of writing) is supported.
+Only the latest release (0.1.1 at the time of writing) is supported.
