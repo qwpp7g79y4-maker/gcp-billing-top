@@ -1,5 +1,7 @@
 # Quality
 
+pep: 10
+
 Tested code commit: a3d92b5 (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
 
@@ -164,8 +166,8 @@ and `Project name`) now exits with code 2. `project.id` with `project.name`
 stays valid and `project.id` wins. The refusal of `usage_start_time` together
 with `invoice.month` is unchanged; there is no month-column option.
 
-Not run: a GitHub Actions run (nothing was pushed). Open and unchanged: N1 to
-N11 of the review gcp-eind-ad79106.
+Not run: a GitHub Actions run (nothing was pushed). Open and unchanged: findings 1 to
+11 of the review gcp-eind-ad79106.
 
 STAND: groen
 
@@ -192,7 +194,7 @@ tested is the silent choice B-1 forbids. `project.id` together with
 is not part of B-1.
 
 Not run: a GitHub Actions run (nothing was pushed).
-Open and unchanged: N1 to N14 of the review gcp-eind-4bd85a5.
+Open and unchanged: findings 1 to 14 of the review gcp-eind-4bd85a5.
 
 STAND: groen
 
@@ -224,7 +226,7 @@ On 2026-11-24 `cargo fmt --check` and `cargo clippy --all-targets --locked -- -D
 also finished with exit 0 on 9580598, and `cargo test --release --locked` passed the same 231 tests. Not run: `cargo deny`,
 `cargo audit`, `cargo publish --dry-run`, a GitHub Actions run (the CRLF problem
 is fixed in the sources and by `.gitattributes`, but no run on GitHub or Windows
-has happened), fuzzing and mutation testing. Open and unchanged: findings N-a,
-N-b and N-c of the review (N-a: the words "built-in prices" in this file, which
-the sources do not have; N-b: memory use; N-c: the range of years), and the
-other N findings.
+has happened), fuzzing and mutation testing. Open and unchanged: findings a,
+b and c of the review (a: the words "built-in prices" in this file, which
+the sources do not have; b: memory use; c: the range of years), and the
+other open findings of that review.

@@ -5,6 +5,7 @@ edition = "2024"
 rust-version = "1.85"
 description = "Offline CLI that shows the top costs per SKU, project and label from a GCP billing-export CSV, with a month-over-month delta"
 license = "MIT OR Apache-2.0"
+authors = ["PEPAI <pep_ai@icloud.com>"]
 readme = "README.md"
 repository = "https://github.com/qwpp7g79y4-maker/gcp-billing-top"
 keywords = ["gcp", "billing", "finops", "cost", "cli"]

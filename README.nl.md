@@ -1,5 +1,7 @@
 # gcp-billing-top
 
+[![crates.io](https://img.shields.io/crates/v/gcp-billing-top.svg)](https://crates.io/crates/gcp-billing-top) [![downloads](https://img.shields.io/crates/d/gcp-billing-top.svg)](https://crates.io/crates/gcp-billing-top) [![CI](https://github.com/qwpp7g79y4-maker/gcp-billing-top/actions/workflows/ci.yml/badge.svg)](https://github.com/qwpp7g79y4-maker/gcp-billing-top/actions/workflows/ci.yml) [![PEPAI checked](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fqwpp7g79y4-maker%2Fgcp-billing-top%2Fmain%2F.github%2Fbadge.json)](QUALITY.md) [![MSRV 1.85](https://img.shields.io/badge/MSRV-1.85-blue.svg)](https://github.com/qwpp7g79y4-maker/gcp-billing-top/blob/main/Cargo.toml) [![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](https://github.com/qwpp7g79y4-maker/gcp-billing-top#license)
+
 Een klein opdrachtregelprogramma dat een **GCP billing-export CSV** leest en
 laat zien waar het geld heen gaat: de hoogste kosten per **SKU**, **project**
 en **label**, met de verandering ten opzichte van de maand ervoor.
@@ -184,6 +186,8 @@ Wijzigingen lopen via Issues, zie [CONTRIBUTING.md](CONTRIBUTING.md).
 Beveiligingsproblemen meld je zoals in [SECURITY.md](SECURITY.md) staat. Elke
 gedragswijziging komt met een test, en het aantal tests in dit bestand en in
 `QUALITY.md` wordt door de testset gecontroleerd.
+
+Na een release staat de tool in sluimermodus (dormant): een nieuwe versie komt er alleen bij een gemelde bug, een verzoek of een beveiligingsprobleem. Beveiliging gaat altijd voor.
 
 ## Kwaliteit
 
