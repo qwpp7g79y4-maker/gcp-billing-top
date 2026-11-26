@@ -10,7 +10,7 @@ readme = "README.md"
 repository = "https://github.com/qwpp7g79y4-maker/gcp-billing-top"
 keywords = ["gcp", "billing", "finops", "cost", "cli"]
 categories = ["command-line-utilities"]
-exclude = ["/.codegraph", "/target", ".github/"]
+exclude = ["/.codegraph", "/target", ".github/", "*-plugin/"]
 
 [dependencies]
 clap = { version = "4.6.7", features = ["derive"] }
