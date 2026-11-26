@@ -21,7 +21,7 @@ target/release/gcp-billing-top tests/fixtures/two_months.csv
 
 The report goes to standard output; the tool writes no files.
 
-## Aan de slag in 5 minuten
+## Quickstart in 5 minutes
 
 1. Install it (see Installation below).
 2. Take a billing-export CSV you already have.
