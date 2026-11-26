@@ -1,5 +1,7 @@
 # Kwaliteit
 
+pep: 8.6
+
 Geteste codecommit: a3d92b5 (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan
 tests staat daar; de testnamen zijn Engels.
@@ -123,7 +125,7 @@ blijft geldig en `project.id` wint. De weigering van `usage_start_time` samen
 met `invoice.month` is ongewijzigd; er is geen maandkolomoptie.
 
 Niet uitgevoerd: een GitHub Actions-run (er is niets gepusht). Open en
-ongewijzigd: N1 tot en met N11 van de review gcp-eind-ad79106.
+ongewijzigd: bevindingen 1 tot en met 11 van de review gcp-eind-ad79106.
 
 STAND: groen
 
@@ -148,7 +150,7 @@ Bewust gewijzigd: de unittest `usage_start_beats_invoice_month` is vervangen doo
 is de stille keuze die B-1 verbiedt. `project.id` naast `project.name` wordt niet
 geweigerd (een BigQuery-export heeft beide); de projectkolom hoort niet bij B-1.
 
-Niet uitgevoerd: een GitHub Actions-run (niets gepusht). Open en ongewijzigd: N1 tot en met N14
+Niet uitgevoerd: een GitHub Actions-run (niets gepusht). Open en ongewijzigd: bevindingen 1 tot en met 14
 van de review gcp-eind-4bd85a5.
 
 STAND: groen
@@ -183,8 +185,8 @@ op 9580598, en `cargo test --release --locked` slaagde voor dezelfde 231 tests. 
 `cargo audit`, `cargo publish --dry-run`, een GitHub Actions-run (het
 CRLF-probleem is hersteld in de bron en met `.gitattributes`, maar er is geen
 run op GitHub of Windows geweest), fuzzing en mutatietests. Open en
-ongewijzigd: bevindingen N-a, N-b en N-c van de review (N-a: de ingebouwde
-tarieven in QUALITY.md, die in de bron niet bestaan; N-b: geheugengebruik;
-N-c: het bereik van de jaren), en de overige N-bevindingen.
+ongewijzigd: bevindingen a, b en c van de review (a: de ingebouwde
+tarieven in QUALITY.md, die in de bron niet bestaan; b: geheugengebruik;
+c: het bereik van de jaren), en de overige open bevindingen van die review.
 
 Deze pagina legt controles vast. Het is geen garantie en geen fuzzrapport.

@@ -4,7 +4,9 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.1.0] - 2026-11-09
+
+Changes made after 2026-11-09; the version number did not change.
 
 ### Fixed
 - Table output replaces control characters in SKU, project and label names
@@ -34,7 +36,6 @@ and the project follows [Semantic Versioning](https://semver.org/).
   text.
 - `.gitattributes` keeps the checkout on LF.
 
-## [0.1.0] - 2026-11-09
 
 First release.
 
