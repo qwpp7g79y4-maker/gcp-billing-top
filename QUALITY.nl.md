@@ -1,6 +1,6 @@
 # Kwaliteit
 
-pep: 8.6
+pep: 10
 
 Geteste codecommit: a3d92b5 (gemeten 2026-11-25; de commit erna wijzigt alleen documenten).
 Engelse versie: [QUALITY.md](QUALITY.md). De koppeling van beweringen aan

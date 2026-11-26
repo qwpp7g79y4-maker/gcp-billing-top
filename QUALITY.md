@@ -1,6 +1,6 @@
 # Quality
 
-pep: 8.6
+pep: 10
 
 Tested code commit: a3d92b5 (measured 2026-11-25; the commit after it changes documents only).
 Dutch version: [QUALITY.nl.md](QUALITY.nl.md).
